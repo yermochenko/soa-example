@@ -1,0 +1,7 @@
+.done {
+    text-decoration: line-through;
+}
+
+.entity-list li {
+    line-height: 30px;
+}
