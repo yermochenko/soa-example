@@ -42,7 +42,7 @@ function formButtonElement(type, text, onClick) {
     return button;
 }
 
-export function noteForm(note, onSubmit, onCancel) {
+export function noteForm(note, onSubmit, onCancel, onDelete) {
     let div = document.createElement('div');
     let header = document.createElement('h1');
     if(note) {
@@ -56,7 +56,7 @@ export function noteForm(note, onSubmit, onCancel) {
     if(note) {
         let idInput = document.createElement('input');
         idInput.type = 'hidden';
-        idInput.name = 'id';
+        idInput.name = 'id-input';
         idInput.value = note.id;
         form.appendChild(idInput);
     }
@@ -66,6 +66,9 @@ export function noteForm(note, onSubmit, onCancel) {
     let buttons = document.createElement('div');
     buttons.appendChild(formButtonElement('submit', 'Сохранить'));
     buttons.appendChild(formButtonElement('button', 'Отменить', onCancel));
+    if(onDelete) {
+        buttons.appendChild(formButtonElement('button', 'Удалить', onDelete));
+    }
     form.appendChild(buttons);
     div.appendChild(form);
     return div;
